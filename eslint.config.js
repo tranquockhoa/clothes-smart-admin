@@ -3,10 +3,10 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import json from "@eslint/json";
 import { defineConfig } from "eslint/config";
-
+import reactHooks from "eslint-plugin-react-hooks";
 export default defineConfig([
   tseslint.configs.recommended,
-
+  reactHooks.configs["recommended-latest"],
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: { js, tseslint },
