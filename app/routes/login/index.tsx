@@ -1,81 +1,75 @@
 import React from "react";
-import type { FormProps } from "antd";
-import MyForm from "../../components/ui/form";
-import MyButton from "../../components/ui/button";
-import MyCheckBox from "../../components/ui/checkbox";
-import MyInput from "../../components/ui/input";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Flex } from "antd";
+import MyForm from "~/components/ui/form";
+import MyInput from "~/components/ui/input";
+import MyButton from "~/components/ui/button";
+import MyCheckBox from "~/components/ui/checkbox";
+import { VALIDATION_MESSAGE } from "~/constants/validation-message";
 
-type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
-};
+const LoginMyForm: React.FC = () => {
+  const onFinish = (values: string) => {
+    console.log("Received values of MyForm: ", values);
+  };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
-const LoginForm: React.FC = () => (
-  <div className="flex justify-center items-center min-h-screen bg-green-300 ">
-    <MyForm
-      name="basic"
-      requiredMark={false}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      className="w-[500px] p-8 bg-white rounded-lg shadow-md"
-    >
-      <h2 className="text-2xl font-bold text-center pt-4 pb-4 mb-8  bg-green-600">
+  return (
+    <div className=" flex flex-col justify-center items-center min-h-screen bg-[#1abc9c]">
+      <h2 className="text-[36px] w-[420px] py-3 text-center rounded-t-[8px] text-white font-bold bg-[#16a085] ">
         Đăng nhập
       </h2>
-
-      <MyForm.Item<FieldType>
-        label={
-          <label className="block text-[16px] font-medium text-gray-800">
-            Tài khoản
-          </label>
-        }
-        name="username"
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-        rules={[{ required: true, message: "Vui lòng nhập tên đăng nhập!" }]}
+      <MyForm
+        name="login"
+        initialValues={{ remember: true }}
+        className=" flex flex-col bg-white w-[420px] rounded-b-[8px] shadow-md !p-5"
+        onFinish={onFinish}
       >
-        <MyInput placeholder="Vui lòng nhập email" className="h-[45px]" />
-      </MyForm.Item>
+        <MyForm.Item
+          name="username"
+          rules={[
+            { required: true, message: VALIDATION_MESSAGE.USERNAME_REQUIRED },
+          ]}
+        >
+          <MyInput
+            className="[&_input::placeholder]:text-base w-full"
+            prefix={<UserOutlined />}
+            placeholder="Nhập email"
+          />
+        </MyForm.Item>
 
-      <MyForm.Item<FieldType>
-        label={
-          <label className="block text-[16px] font-medium text-gray-800">
-            Mật khẩu
-          </label>
-        }
-        name="password"
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-        rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
-      >
-        <MyInput.Password placeholder="Nhập mật khẩu" className="h-[45px]" />
-      </MyForm.Item>
+        <MyForm.Item
+          name="password"
+          rules={[
+            { required: true, message: VALIDATION_MESSAGE.PASSWORD_REQUIRED },
+          ]}
+        >
+          <MyInput
+            className="[&_input::placeholder]:text-base"
+            prefix={<LockOutlined />}
+            type="password"
+            placeholder="Nhập mật khẩu"
+          />
+        </MyForm.Item>
 
-      <MyForm.Item<FieldType>
-        name="remember"
-        valuePropName="checked"
-        label={null}
-      >
-        <MyCheckBox>Nhớ mật khẩu</MyCheckBox>
-      </MyForm.Item>
+        <MyForm.Item>
+          <Flex justify="space-between" align="center">
+            <MyForm.Item name="remember" valuePropName="checked" noStyle>
+              <MyCheckBox>Nhớ mật khẩu</MyCheckBox>
+            </MyForm.Item>
+          </Flex>
+        </MyForm.Item>
 
-      <MyForm.Item label={null}>
-        <MyButton type="primary" htmlType="submit">
+        <MyButton block type="primary" htmlType="submit" className="!mb-3">
           Đăng nhập
         </MyButton>
-      </MyForm.Item>
-    </MyForm>
-  </div>
-);
 
-export default LoginForm;
+        <nav className="flex justify-center gap-2">
+          <a href="">Quyên mật khẩu</a>
+          <span>Hoặc</span>
+          <a href="">Đăng kí tài khoản</a>
+        </nav>
+      </MyForm>
+    </div>
+  );
+};
+
+export default LoginMyForm;
