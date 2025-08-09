@@ -58,15 +58,14 @@ const LoginMyForm: React.FC = () => {
           </Flex>
         </MyForm.Item>
 
-        <MyButton block type="primary" htmlType="submit" className="!mb-3">
+        <MyButton
+          block
+          type="primary"
+          htmlType="submit"
+          className="!mb-3 !font-medium !text-[16px]"
+        >
           Đăng nhập
         </MyButton>
-
-        <nav className="flex justify-center gap-2">
-          <a href="">Quyên mật khẩu</a>
-          <span>Hoặc</span>
-          <a href="">Đăng kí tài khoản</a>
-        </nav>
       </MyForm>
     </div>
   );
