@@ -8,16 +8,20 @@ const App: React.FC = () => (
     theme={{
       token: {
         borderRadius: 5,
+        colorPrimary: "#16a085",
+        colorLink: "#16a085",
       },
       components: {
         Button: {
-          colorPrimary: "#1890ff",
-          algorithm: true, // Enable algorithm
+          colorPrimary: "#16a085",
+          controlHeight: 45,
+          boxShadow: "none",
         },
         Input: {
-          colorPrimary: "#1890ff",
-          algorithm: true, // Enable algorithm
+          colorPrimary: "#1abc9c",
+          controlHeight: 45,
         },
+        Typography: {},
       },
     }}
   >

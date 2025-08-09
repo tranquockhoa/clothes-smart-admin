@@ -1,5 +1,5 @@
 import { Tag, type TagProps } from "antd";
-import type { FC } from "react";
+import { type FC } from "react";
 
 const BaseTag: FC<TagProps> = (props) => {
   return <Tag {...props} />;
