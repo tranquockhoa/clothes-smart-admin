@@ -10,6 +10,7 @@ export default [
   layout("./routes/main-layout.tsx", [
     index("./routes/manage-account/index.tsx"),
     route("manage-banner", "./routes/manage-banner/index.tsx"),
+    route("profile", "./routes/profile/index.tsx"),
   ]),
   route("dev", "./routes/dev/dev.tsx"),
 ] satisfies RouteConfig;

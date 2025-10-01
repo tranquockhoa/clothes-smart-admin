@@ -52,6 +52,11 @@ const items: MenuItem[] = [
   getItem("Quản lí kho hàng", "10", <TeamOutlined />),
   getItem("Quản lí caegory", "11", <TeamOutlined />),
   getItem("Thống kê", "12", <TeamOutlined />),
+  getItem(
+    <NavLink to={"/profile"}>Thông tin tài khoản</NavLink>,
+    "13",
+    <TeamOutlined />,
+  ),
 ];
 
 console.log(items);
