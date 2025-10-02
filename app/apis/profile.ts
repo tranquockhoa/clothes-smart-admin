@@ -6,5 +6,5 @@ import { ADMIN_USER } from "./config.endpoint";
 export const getProfile = async () => {
   const response: AxiosResponse<IUser> =
     await authorizedRequest.get<IUser>(ADMIN_USER);
-  return response;
+  return response.data;
 };

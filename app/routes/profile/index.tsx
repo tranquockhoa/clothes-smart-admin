@@ -1,3 +1,9 @@
+import Infomation from "./components/infomation";
+
 export default function Profile() {
-  return <div>Profile</div>;
+  return (
+    <div>
+      <Infomation />
+    </div>
+  );
 }
