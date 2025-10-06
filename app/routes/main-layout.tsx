@@ -10,7 +10,7 @@ import {
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
 import { NavLink } from "react-router";
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -51,7 +51,11 @@ const items: MenuItem[] = [
   getItem("Quản lí đơn hàng", "9", <FileOutlined />),
   getItem("Quản lí kho hàng", "10", <TeamOutlined />),
   getItem("Quản lí caegory", "11", <TeamOutlined />),
-  getItem("Thống kê", "12", <TeamOutlined />),
+  getItem(
+    <NavLink to={"/manage-user"}>Quản lí người dùng</NavLink>,
+    "12",
+    <TeamOutlined />,
+  ),
   getItem(
     <NavLink to={"/profile"}>Thông tin tài khoản</NavLink>,
     "13",
@@ -83,13 +87,16 @@ const MainLayout: React.FC = () => {
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: "0 16px" }}>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+            borderBottom: "1px solid #d1f0eb",
+          }}
+        />
+        <Content style={{ background: colorBgContainer }}>
           <Outlet />
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   );

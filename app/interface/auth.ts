@@ -6,8 +6,16 @@ export interface LoginParams {
   remember?: boolean;
 }
 
-export interface LoginResponse {
+export interface ILoginDataRespond {
   accessToken: string;
   refreshToken: string;
   user: IUser;
+}
+
+export interface ILoginRespond {
+  data: ILoginDataRespond;
+  code: number;
+  status: boolean;
+  message: string;
+  timestamp: string;
 }

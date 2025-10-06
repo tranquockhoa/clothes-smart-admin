@@ -1,8 +1,8 @@
-import React from "react";
-import LoginMyForm from "~/routes/pages/auth/login";
+// import React from "react";
+// import LoginMyForm from "~/routes/pages/auth/login";
 
-const Profile: React.FC = () => {
-  return <LoginMyForm></LoginMyForm>;
-};
+// const Profile: React.FC = () => {
+//   return <LoginMyForm>My</LoginMyForm>;
+// };
 
-export default Profile;
+// export default Profile;
