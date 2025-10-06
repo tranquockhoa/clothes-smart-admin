@@ -1,6 +1,6 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Flex, Form, notification } from "antd";
+import { Flex, notification } from "antd";
 import MyForm from "~/components/ui/form";
 import MyInput from "~/components/ui/input";
 import MyButton from "~/components/ui/button";
@@ -23,7 +23,6 @@ interface IError {
 
 const LoginMyForm: React.FC = () => {
   const navigate = useNavigate();
-  const [form] = Form.useForm();
 
   const onFinish = async (form: LoginParams) => {
     try {
@@ -37,7 +36,6 @@ const LoginMyForm: React.FC = () => {
         message: MESSAGE_STATUS.SUCCESS,
         description: MESSAGE_STATUS.LOGIN_SUCCESSFULLY,
       });
-
       navigate("/");
     } catch (error) {
       notification.error({
@@ -54,7 +52,7 @@ const LoginMyForm: React.FC = () => {
       </h2>
       <MyForm<LoginParams>
         name="login"
-        initialValues={{ remember: true }}
+        initialValues={initialValues}
         className="flex flex-col bg-white w-[420px] rounded-b-[8px] shadow-md !p-5"
         onFinish={onFinish}
       >
