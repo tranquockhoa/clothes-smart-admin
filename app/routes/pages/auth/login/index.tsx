@@ -1,15 +1,50 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Flex } from "antd";
+import { Flex, Form, notification } from "antd";
 import MyForm from "~/components/ui/form";
 import MyInput from "~/components/ui/input";
 import MyButton from "~/components/ui/button";
 import MyCheckBox from "~/components/ui/checkbox";
 import { VALIDATION_MESSAGE } from "~/constants/validation-message";
+import { LoginParams } from "~/interface/auth";
+import { loginApi } from "~/apis/auth";
+import { MESSAGE_STATUS } from "~/constants/common.const";
+import { useNavigate } from "react-router";
+
+const initialValues: LoginParams = {
+  email: "",
+  password: "",
+  remember: false,
+};
+
+interface IError {
+  data: { message: string };
+}
 
 const LoginMyForm: React.FC = () => {
-  const onFinish = (values: string) => {
-    console.log("Received values of MyForm: ", values);
+  const navigate = useNavigate();
+  const [form] = Form.useForm();
+
+  const onFinish = async (form: LoginParams) => {
+    try {
+      delete form.remember;
+      const res = await loginApi(form);
+      if (res && res.accessToken) {
+        localStorage.setItem("token", res.accessToken);
+        localStorage.setItem("refreshToken", res.refreshToken);
+      }
+      notification.success({
+        message: MESSAGE_STATUS.SUCCESS,
+        description: MESSAGE_STATUS.LOGIN_SUCCESSFULLY,
+      });
+
+      navigate("/");
+    } catch (error) {
+      notification.error({
+        message: MESSAGE_STATUS.ERROR,
+        description: (error as IError)?.data?.message || "Lỗi",
+      });
+    }
   };
 
   return (
@@ -17,14 +52,14 @@ const LoginMyForm: React.FC = () => {
       <h2 className="text-[36px] w-[420px] py-3 text-center rounded-t-[8px] text-white font-bold bg-[#16a085] ">
         Đăng nhập
       </h2>
-      <MyForm
+      <MyForm<LoginParams>
         name="login"
         initialValues={{ remember: true }}
         className="flex flex-col bg-white w-[420px] rounded-b-[8px] shadow-md !p-5"
         onFinish={onFinish}
       >
         <MyForm.Item
-          name="username"
+          name="email"
           rules={[
             { required: true, message: VALIDATION_MESSAGE.USERNAME_REQUIRED },
           ]}

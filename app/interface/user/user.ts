@@ -16,10 +16,12 @@ export interface IUser {
   email: string;
   password: string;
   phone: string;
-  address: string;
+  address: string[];
   dob: string;
   gender: string;
   role: string;
   status: string;
   accountType: string;
+  createdAt: string;
+  updateAt: string;
 }
