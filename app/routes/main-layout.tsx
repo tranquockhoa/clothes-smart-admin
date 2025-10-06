@@ -52,6 +52,11 @@ const items: MenuItem[] = [
   getItem("Quản lí kho hàng", "10", <TeamOutlined />),
   getItem("Quản lí caegory", "11", <TeamOutlined />),
   getItem("Thống kê", "12", <TeamOutlined />),
+  getItem(
+    <NavLink to={"/profile"}>Thông tin tài khoản</NavLink>,
+    "13",
+    <TeamOutlined />,
+  ),
 ];
 
 console.log(items);
@@ -80,20 +85,6 @@ const MainLayout: React.FC = () => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} />
         <Content style={{ margin: "0 16px" }}>
-          {/* <Breadcrumb
-            style={{ margin: "16px 0" }}
-            items={[{ title: "User" }, { title: "Bill" }]}
-          />
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            Bill is a cat.
-          </div> */}
           <Outlet />
         </Content>
         <Footer style={{ textAlign: "center" }}>
