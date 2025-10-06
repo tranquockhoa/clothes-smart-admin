@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import profileReducer from "./features/profile/profile.store";
+import allUserReducer from "./features/manage-user/manage-user.store";
 
 export const store = configureStore({
   reducer: {
     profile: profileReducer,
+    allUser: allUserReducer,
   },
 });
 

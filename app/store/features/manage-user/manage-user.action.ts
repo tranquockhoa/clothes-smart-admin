@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAdminUsersProfile } from "~/apis/profile";
+import { getAllUserApi } from "~/apis/manage-user";
 import { IResponseError } from "~/interface";
 
-export const getAdminUsersProfileRequest = createAsyncThunk(
-  "admin/users/profile",
+export const getAllUserRequest = createAsyncThunk(
+  "allUser/get",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await getAdminUsersProfile();
+      const response = await getAllUserApi();
       return response;
     } catch (error) {
       return rejectWithValue(error as IResponseError);

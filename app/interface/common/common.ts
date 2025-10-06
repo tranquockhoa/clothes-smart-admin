@@ -1,4 +1,4 @@
-export interface ResponseError {
+export interface IResponseError {
   status: boolean;
   message: string;
   timestamp: string;

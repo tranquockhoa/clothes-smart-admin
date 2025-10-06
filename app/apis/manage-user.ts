@@ -6,5 +6,5 @@ import { IAllUserApiResponse } from "~/interface/manage-user/manage-user";
 export const getAllUserApi = async () => {
   const response: AxiosResponse<IAllUserApiResponse> =
     await authorizedRequest.get<IAllUserApiResponse>(ADMIN_USER);
-  return response.data;
+  return response.data?.data?.results;
 };
