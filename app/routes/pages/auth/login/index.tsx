@@ -67,7 +67,7 @@ const LoginMyForm: React.FC = () => {
           <MyInput
             className="[&_input::placeholder]:text-base w-full"
             prefix={<UserOutlined />}
-            placeholder="Nhập email"
+            placeholder="Nhập email "
           />
         </MyForm.Item>
 
