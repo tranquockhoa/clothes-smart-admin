@@ -20,7 +20,7 @@ const LoginMyForm: React.FC = () => {
       <MyForm
         name="login"
         initialValues={{ remember: true }}
-        className=" flex flex-col bg-white w-[420px] rounded-b-[8px] shadow-md !p-5"
+        className="flex flex-col bg-white w-[420px] rounded-b-[8px] shadow-md !p-5"
         onFinish={onFinish}
       >
         <MyForm.Item
