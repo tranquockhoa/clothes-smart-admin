@@ -23,7 +23,7 @@ export default function Profile() {
 
   useEffect(() => {
     dispatch(getAdminUsersProfileRequest());
-  }, []);
+  }, [dispatch]);
 
   const onFinish = async (form: IProfileFormValues) => {
     const payload: IFormUpdateProfile = {

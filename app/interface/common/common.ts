@@ -1,10 +1,10 @@
-export interface ResponseError {
+export interface IResponseError {
   status: boolean;
   message: string;
   timestamp: string;
   code: number;
 }
-export interface IPageAbleResponse {
+export interface IPageAble {
   current?: number;
   pageSize?: number;
   sortField?: string;

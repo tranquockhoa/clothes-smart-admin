@@ -1,12 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAdminUsersProfile } from "~/apis/profile";
-
-interface IApiError {
-  status: boolean;
-  message: string;
-  timestamp: string;
-  code: number;
-}
+import { IResponseError } from "~/interface";
 
 export const getAdminUsersProfileRequest = createAsyncThunk(
   "admin/users/profile",
@@ -15,7 +9,7 @@ export const getAdminUsersProfileRequest = createAsyncThunk(
       const response = await getAdminUsersProfile();
       return response;
     } catch (error) {
-      return rejectWithValue(error as IApiError);
+      return rejectWithValue(error as IResponseError);
     }
   },
 );
