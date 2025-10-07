@@ -3,25 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "~/store/store";
 import MyTable from "~/components/ui/table";
 import { IUser } from "~/interface/user/user";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllUserRequest } from "~/store/features/manage-user/manage-user.action";
 
 const columns: TableProps<IUser>["columns"] = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Email",
-    dataIndex: "email",
-    key: "email",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
+  { title: "Name", dataIndex: "name", key: "name" },
+  { title: "Email", dataIndex: "email", key: "email" },
+  { title: "Address", dataIndex: "address", key: "address" },
   {
     title: "Role",
     dataIndex: "role",
@@ -56,19 +44,35 @@ const columns: TableProps<IUser>["columns"] = [
 ];
 
 export default function ManageAccount() {
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 8,
+  });
+
   const dispatch = useDispatch<AppDispatch>();
   const { allUser, loading } = useSelector((state: RootState) => state.allUser);
 
   useEffect(() => {
-    dispatch(getAllUserRequest());
-  }, [dispatch]);
+    dispatch(getAllUserRequest(pagination));
+  }, [dispatch, pagination]);
+
+  const dataSource = allUser?.results || [];
 
   return (
     <div style={{ padding: 16 }}>
       <MyTable<IUser>
         columns={columns}
-        dataSource={allUser || []}
+        dataSource={dataSource}
         loading={loading}
+        pagination={{
+          current: pagination.current,
+          pageSize: pagination.pageSize,
+          total: allUser?.totalItems,
+          onChange: (page, pageSize) =>
+            setPagination({ current: page, pageSize }),
+        }}
+        rowClassName={() => "cursor-pointer"}
+        className="rounded-lg border border-gray-200 shadow-lg hover:shadow-xl h-full"
       />
     </div>
   );

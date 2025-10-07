@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllUserRequest } from "./manage-user.action";
-import { IUser } from "~/interface/user/user";
+import {} from "~/interface/user/user";
+import { IUserResults } from "~/interface/manage-user/manage-user";
 
 interface AllUserState {
-  allUser: IUser[] | null;
+  allUser: IUserResults | null;
   loading: boolean;
   error: string;
 }

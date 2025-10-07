@@ -4,7 +4,7 @@ export interface IResponseError {
   timestamp: string;
   code: number;
 }
-export interface IPageAbleResponse {
+export interface IPageAble {
   current?: number;
   pageSize?: number;
   sortField?: string;
