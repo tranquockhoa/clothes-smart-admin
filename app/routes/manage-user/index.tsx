@@ -1,11 +1,16 @@
-import { TableProps, Tag } from "antd";
+import { notification, Space, TableProps, Tag } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "~/store/store";
 import MyTable from "~/components/ui/table";
 import { IUser } from "~/interface/user/user";
 import { useEffect, useState } from "react";
 import { getAllUserRequest } from "~/store/features/manage-user/manage-user.action";
-
+import MyButton from "~/components/ui/button";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { deleteUserApi } from "~/apis/manage-user";
+import Popconfirm from "~/components/ui/popconfirm";
+import { MESSAGE_STATUS } from "~/constants/common.const";
+import { IError } from "~/interface/common/common";
 const columns: TableProps<IUser>["columns"] = [
   { title: "Name", dataIndex: "name", key: "name" },
   { title: "Email", dataIndex: "email", key: "email" },
@@ -39,6 +44,50 @@ const columns: TableProps<IUser>["columns"] = [
       const month = String(date.getMonth() + 1).padStart(2, "0");
       const year = date.getFullYear();
       return `${day}/${month}/${year}`;
+    },
+  },
+  {
+    title: "Action",
+    key: "action",
+    align: "center",
+    render: (_, record) => {
+      const handleDelete = async () => {
+        try {
+          await deleteUserApi(record._id);
+          notification.success({
+            message: MESSAGE_STATUS.SUCCESS,
+            description: "Xóa thành công",
+          });
+        } catch (error) {
+          notification.error({
+            message: MESSAGE_STATUS.ERROR,
+            description: (error as IError)?.data.message,
+          });
+        }
+      };
+
+      return (
+        <Space size="middle">
+          <MyButton
+            type="primary"
+            icon={<EditOutlined />}
+            onClick={() => console.log("Edit", record._id)}
+          >
+            Edit
+          </MyButton>
+
+          <Popconfirm
+            title={`Xác nhận xoá người ${record.name}?`}
+            okText="Xoá"
+            cancelText="Huỷ"
+            onConfirm={handleDelete}
+          >
+            <MyButton color="red" variant="solid" icon={<DeleteOutlined />}>
+              Delete
+            </MyButton>
+          </Popconfirm>
+        </Space>
+      );
     },
   },
 ];
