@@ -15,3 +15,15 @@ export interface IUserResults {
   current: number;
   pageSize: number;
 }
+
+interface Idata {
+  _id: string;
+}
+
+export interface IManageUserDelteResponse {
+  status: string;
+  code: number;
+  data: Idata;
+  message: string;
+  timestamp: string;
+}

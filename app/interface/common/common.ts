@@ -4,6 +4,10 @@ export interface IResponseError {
   timestamp: string;
   code: number;
 }
+
+export interface IError {
+  data: IResponseError;
+}
 export interface IPageAble {
   current?: number;
   pageSize?: number;
