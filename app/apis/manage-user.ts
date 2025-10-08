@@ -6,6 +6,7 @@ import {
   IManageUserDelteResponse,
 } from "~/interface/manage-user/manage-user";
 import { IPageAble } from "~/interface/common/common";
+import { IUserDataRespond } from "~/interface/user/user";
 
 export const getAllUserApi = async (params: IPageAble) => {
   const response: AxiosResponse<IAllUserApiResponse> =
@@ -19,4 +20,10 @@ export const deleteUserApi = async (id: string) => {
       `${ADMIN_USER}/${id}`,
     );
   return response.data;
+};
+
+export const getUserProfileApi = async (id: string) => {
+  const response: AxiosResponse<IUserDataRespond> =
+    await authorizedRequest.get<IUserDataRespond>(`${ADMIN_USER}/${id}`);
+  return response.data.data;
 };
