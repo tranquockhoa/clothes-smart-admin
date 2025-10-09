@@ -17,7 +17,7 @@ export interface INewUser {
 }
 
 export interface IUser {
-  _id: string;
+  _id?: string;
   name: string;
   email: string;
   phone: string;
@@ -27,9 +27,9 @@ export interface IUser {
   password: string;
   role: UserRole;
   status: string;
-  accountType: string;
-  createdAt: string;
-  updateAt: string;
+  accountType?: string;
+  createdAt?: string;
+  updateAt?: string;
 }
 
 export interface IUserDataRespond {

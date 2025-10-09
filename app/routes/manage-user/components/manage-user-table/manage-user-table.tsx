@@ -11,7 +11,7 @@ import { deleteUserApi } from "~/apis/manage-user";
 import Popconfirm from "~/components/ui/popconfirm";
 import { MESSAGE_STATUS } from "~/constants/common.const";
 import { IError, IPageAble } from "~/interface/common/common";
-import { ManagerUserEditFormModal } from "..";
+import { ManagerUserEditFormModal } from "../manage-user-edit-form-modal";
 
 export default function ManageUserTable() {
   const [pagination, setPagination] = useState<IPageAble>({
@@ -73,7 +73,7 @@ export default function ManageUserTable() {
       render: (_, record) => {
         const handleDelete = async () => {
           try {
-            await deleteUserApi(record._id);
+            await deleteUserApi(record._id ?? "");
             notification.success({
               message: MESSAGE_STATUS.SUCCESS,
               description: "Xóa thành công",
@@ -116,7 +116,7 @@ export default function ManageUserTable() {
   ];
 
   return (
-    <div style={{ padding: 16 }}>
+    <div>
       <ManagerUserEditFormModal
         visible={showEditModal}
         onCancel={() => {
