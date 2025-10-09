@@ -4,9 +4,11 @@ import { ADMIN_USER } from "./config.endpoint";
 import {
   IAllUserApiResponse,
   IManageUserDelteResponse,
+  IUserCreateResponse,
 } from "~/interface/manage-user/manage-user";
 import { IPageAble } from "~/interface/common/common";
-import { IUserDataRespond } from "~/interface/user/user";
+import { IUser, IUserDataRespond } from "~/interface/user/user";
+import { IFormUpdateProfile } from "~/interface/profile/profile";
 
 export const getAllUserApi = async (params: IPageAble) => {
   const response: AxiosResponse<IAllUserApiResponse> =
@@ -26,4 +28,19 @@ export const getUserProfileApi = async (id: string) => {
   const response: AxiosResponse<IUserDataRespond> =
     await authorizedRequest.get<IUserDataRespond>(`${ADMIN_USER}/${id}`);
   return response.data.data;
+};
+
+export const updateUserProfileApi = async (
+  id: string,
+  param: IFormUpdateProfile,
+) => {
+  const response: AxiosResponse<IUserDataRespond> =
+    await authorizedRequest.patch(`${ADMIN_USER}/${id}`, param);
+  return response.data;
+};
+
+export const createNewUserApi = async (params: IUser) => {
+  const response: AxiosResponse<IUserCreateResponse> =
+    await authorizedRequest.post(ADMIN_USER, params);
+  return response.data;
 };

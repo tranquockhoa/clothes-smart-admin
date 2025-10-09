@@ -22,7 +22,7 @@ const App: React.FC = () => (
             boxShadow: "none",
           },
           Input: {
-            colorPrimary: "#1abc9c",
+            colorPrimary: "#1677ff",
             controlHeight: 45,
           },
           Typography: {},

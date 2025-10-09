@@ -27,3 +27,18 @@ export interface IManageUserDelteResponse {
   message: string;
   timestamp: string;
 }
+
+export interface IFormUpdateUserProfile {
+  name: string;
+  address: string;
+  role: string;
+  status: string;
+}
+
+export interface IUserCreateResponse {
+  status: boolean;
+  code: number;
+  data: { id: string };
+  message: string;
+  timestamp: string;
+}
