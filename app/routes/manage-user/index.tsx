@@ -10,11 +10,11 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { deleteUserApi } from "~/apis/manage-user";
 import Popconfirm from "~/components/ui/popconfirm";
 import { MESSAGE_STATUS } from "~/constants/common.const";
-import { IError } from "~/interface/common/common";
+import { IError, IPageAble } from "~/interface/common/common";
 import { ManagerUserEditFormModal } from "./components";
 
 export default function ManageAccount() {
-  const [pagination, setPagination] = useState({
+  const [pagination, setPagination] = useState<IPageAble>({
     current: 1,
     pageSize: 8,
   });
@@ -49,7 +49,7 @@ export default function ManageAccount() {
       dataIndex: "status",
       key: "status",
       render: (_, { status }) => {
-        const color = status === "ADMIN" ? "red" : "green";
+        const color = status === "INACTIVE" ? "red" : "green";
         return <Tag color={color}>{status}</Tag>;
       },
     },
@@ -123,6 +123,7 @@ export default function ManageAccount() {
           setShowEditModal(false);
         }}
         userId={selectedUser?._id ?? ""}
+        pagination={pagination}
       />
       <MyTable<IUser>
         columns={columns}
