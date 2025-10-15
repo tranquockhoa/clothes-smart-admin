@@ -113,12 +113,13 @@ export const ManageBannerTable: React.FC = () => {
   }, [allBanner]);
   const columns: TableColumnsType<DataType> = [
     { key: "sort", align: "center", width: 80, render: () => <DragHandle /> },
-    { title: "Title", dataIndex: "title" },
-    { title: "Description", dataIndex: "Description" },
-    { title: "LinkUrl", dataIndex: "linkUrl" },
+    { title: "Title", dataIndex: "title", align: "center" },
+    { title: "Description", dataIndex: "Description", align: "center" },
+    { title: "LinkUrl", dataIndex: "linkUrl", align: "center" },
     {
       title: "Status",
       dataIndex: "status",
+      align: "center",
       render: (value) => (
         <Tag color={value === "ACTIVE" ? "green" : "red"}>{value}</Tag>
       ),
@@ -126,6 +127,7 @@ export const ManageBannerTable: React.FC = () => {
     {
       title: "Action",
       dataIndex: "action",
+      align: "center",
       render: (_, record) => {
         const handleDelete = async () => {
           try {
