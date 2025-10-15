@@ -8,3 +8,10 @@ export enum STATUS {
   ACTIVE = "ACTIVE",
   INACTIVE = "INACTIVE",
 }
+
+export enum FILE_STATUS {
+  UPLOADING = "uploading",
+  DONE = "done",
+  ERROR = "error",
+  REMOVED = "removed",
+}

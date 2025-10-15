@@ -1,9 +1,11 @@
-import { Breadcrumb } from "antd";
+import { ManageBannerTable } from "./component/manage-banner-table";
+import ManageBannerToolbar from "./component/manage-banner-toolbar";
 
 export default function ManageBanner() {
   return (
     <div style={{ padding: 16 }}>
-      <Breadcrumb items={[{ title: "Admin" }, { title: "Manage-banner" }]} />
+      <ManageBannerToolbar />
+      <ManageBannerTable></ManageBannerTable>
     </div>
   );
 }

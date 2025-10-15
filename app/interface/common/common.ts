@@ -15,3 +15,12 @@ export interface IPageAble {
   sortOrder?: string;
   search?: string;
 }
+
+// export interface IFile {
+//   uid: string;
+//   name: string;
+//   status: FILE_STATUS;
+//   response: IFileUploadResponse;
+//   linkProps: '{"download": "image"}';
+//   xhr: "XMLHttpRequest{ ... }";
+// }
