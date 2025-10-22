@@ -138,7 +138,7 @@ export const ManagerBannerCreateFormModal: React.FC<
           fileList={fileList}
         >
           <Button type="primary" icon={<UploadOutlined />}>
-            Upload
+            Upload image
           </Button>
         </Upload>
       </MyForm>

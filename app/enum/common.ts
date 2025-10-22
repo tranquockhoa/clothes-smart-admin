@@ -15,3 +15,8 @@ export enum FILE_STATUS {
   ERROR = "error",
   REMOVED = "removed",
 }
+
+export enum STATUS_PRODUCT {
+  AVAILABLE = "available",
+  UNAVAILABLE = "unavaiable",
+}

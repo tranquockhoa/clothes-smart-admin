@@ -1,4 +1,4 @@
-import { Space, Tag, type TableColumnsType, notification } from "antd";
+import { Space, Tag, message, type TableColumnsType, notification } from "antd";
 import Popconfirm from "~/components/ui/popconfirm";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import TableCommon, { TABLE_TYPES } from "~/components/common/table";
@@ -17,30 +17,33 @@ interface Category {
 
 export default function ManageCategoriesTable() {
   const [loading, setLoading] = useState(false);
-  const categories = [
+  const [categories, setCategories] = useState<Category[]>([
     {
       id: "1",
-      name: "áo thun",
-      description: "áo thun ",
+      name: "Điện tử",
+      description: "Các sản phẩm điện tử, công nghệ",
       createdAt: "2024-01-15",
       updatedAt: "2024-01-15",
     },
     {
       id: "2",
       name: "Thời trang",
-      description: "Quần áo",
+      description: "Quần áo, phụ kiện thời trang",
       createdAt: "2024-01-16",
       updatedAt: "2024-01-16",
     },
-  ];
+  ]);
 
   const handleEdit = (record: Category) => {
+    // TODO: Implement edit functionality
     console.log("Edit category:", record);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (id: string) => {
     try {
-      console.log("first");
+      setLoading(true);
+      setCategories((prev) => prev.filter((item) => item.id !== id));
+      message.success(MESSAGE_STATUS.SUCCESS);
     } catch (error) {
       notification.error({
         message: MESSAGE_STATUS.ERROR,
@@ -113,7 +116,8 @@ export default function ManageCategoriesTable() {
   return (
     <TableCommon
       tableType={TABLE_TYPES.PRIMARY}
-      columns={columns}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      columns={columns as any}
       dataSource={categories}
       rowKey="id"
       loading={loading}
