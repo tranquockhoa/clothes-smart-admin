@@ -1,7 +1,12 @@
-import React from "react";
+import ManageCategoriesTable from "./components/manage-categories-table";
+import ManageCategoriesToolbar from "./components/manage-categories-toolbar";
+import ManagePageLayout from "~/components/layouts/manage-page-layout";
 
-const ManageCategories: React.FC = () => {
-  return <div>categories</div>;
-};
-
-export default ManageCategories;
+export default function ManageCategories() {
+  return (
+    <ManagePageLayout>
+      <ManageCategoriesToolbar />
+      <ManageCategoriesTable />
+    </ManagePageLayout>
+  );
+}

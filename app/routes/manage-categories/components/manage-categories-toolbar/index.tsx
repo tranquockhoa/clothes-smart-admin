@@ -1,21 +1,21 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { ManagerCategoriesCreateFormModal } from "./components/manage-categories-create-form";
+import { useState } from "react";
 import { Space } from "antd";
 import MyButton from "~/components/ui/button";
-import { ManagerUserCreateFormModal } from "../manage-user-create-form-modal";
-import { useState } from "react";
+import { PlusOutlined } from "@ant-design/icons";
 
-export default function ManageUserToolbar() {
+export default function ManageCategoriesToolbar() {
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   const handleCancel = () => {
     setShowCreateModal(false);
   };
-
   return (
     <Space size="middle">
-      <ManagerUserCreateFormModal
+      <ManagerCategoriesCreateFormModal
         visible={showCreateModal}
         onCancel={handleCancel}
       />
+
       <MyButton
         color="primary"
         variant="solid"

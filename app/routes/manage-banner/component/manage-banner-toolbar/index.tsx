@@ -24,7 +24,7 @@ export default function ManageBannerToolbar() {
           setShowCreateModal(true);
         }}
       >
-        Thêm banner
+        Thêm mới
       </MyButton>
     </Space>
   );
