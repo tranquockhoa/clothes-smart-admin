@@ -1,11 +1,12 @@
 import ManageUserTable from "./components/manage-user-table/manage-user-table";
 import ManageUserToolbar from "./components/manage-user-toolbar";
+import ManagePageLayout from "~/components/layouts/manage-page-layout";
 
 export default function ManageAccount() {
   return (
-    <div className="p-[32px] flex flex-col gap-[10px]">
+    <ManagePageLayout>
       <ManageUserToolbar />
       <ManageUserTable />
-    </div>
+    </ManagePageLayout>
   );
 }

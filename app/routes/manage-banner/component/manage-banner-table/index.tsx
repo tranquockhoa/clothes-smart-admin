@@ -8,7 +8,6 @@ import {
   notification,
   Popconfirm,
   Space,
-  Table,
   TableColumnsType,
   Tag,
 } from "antd";
@@ -31,6 +30,7 @@ import MyButton from "~/components/ui/button";
 import { MESSAGE_STATUS } from "~/constants/common.const";
 import { IError } from "~/interface/common/common";
 import { ManagerBannerEditFormModal } from "../manage-banner-edit-form";
+import TableCommon from "~/components/common/table";
 
 interface DataType extends IBannerData {}
 
@@ -210,7 +210,7 @@ export const ManageBannerTable: React.FC = () => {
         items={allBanner?.data.map((i) => i._id) ?? []}
         strategy={verticalListSortingStrategy}
       >
-        <Table<DataType>
+        <TableCommon<DataType>
           rowKey="_id"
           components={{ body: { row: Row } }}
           columns={columns}
