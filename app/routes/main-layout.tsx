@@ -50,7 +50,11 @@ const items: MenuItem[] = [
   ]),
   getItem("Quản lí đơn hàng", "9", <FileOutlined />),
   getItem("Quản lí kho hàng", "10", <TeamOutlined />),
-  getItem("Quản lí caegory", "11", <TeamOutlined />),
+  getItem(
+    <NavLink to="/manage-categories">Quản lí categories</NavLink>,
+    "11",
+    <TeamOutlined />,
+  ),
   getItem(
     <NavLink to={"/manage-user"}>Quản lí người dùng</NavLink>,
     "12",

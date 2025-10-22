@@ -1,7 +1,6 @@
 import { notification, Space, TableProps, Tag } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "~/store/store";
-import MyTable from "~/components/ui/table";
 import { IUser } from "~/interface/user/user";
 import { useEffect, useState } from "react";
 import { getAllUserRequest } from "~/store/features/manage-user/manage-user.action";
@@ -12,6 +11,7 @@ import Popconfirm from "~/components/ui/popconfirm";
 import { MESSAGE_STATUS } from "~/constants/common.const";
 import { IError, IPageAble } from "~/interface/common/common";
 import { ManagerUserEditFormModal } from "../manage-user-edit-form-modal";
+import TableCommon from "~/components/common/table";
 
 export default function ManageUserTable() {
   const [pagination, setPagination] = useState<IPageAble>({
@@ -125,7 +125,7 @@ export default function ManageUserTable() {
         userId={selectedUser?._id ?? ""}
         pagination={pagination}
       />
-      <MyTable<IUser>
+      <TableCommon<IUser>
         columns={columns}
         dataSource={dataSource}
         loading={loading}
@@ -137,7 +137,6 @@ export default function ManageUserTable() {
             setPagination({ current: page, pageSize }),
         }}
         rowClassName={() => "cursor-pointer"}
-        className="rounded-lg border border-gray-200 shadow-lg hover:shadow-xl h-full"
       />
     </div>
   );

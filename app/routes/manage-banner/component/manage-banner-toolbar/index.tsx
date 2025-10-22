@@ -1,10 +1,10 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Space } from "antd";
 import MyButton from "~/components/ui/button";
-import { ManagerUserCreateFormModal } from "../manage-user-create-form-modal";
 import { useState } from "react";
+import { ManagerBannerCreateFormModal } from "./components/manage-banner-create-form";
 
-export default function ManageUserToolbar() {
+export default function ManageBannerToolbar() {
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false);
   const handleCancel = () => {
     setShowCreateModal(false);
@@ -12,7 +12,7 @@ export default function ManageUserToolbar() {
 
   return (
     <Space size="middle">
-      <ManagerUserCreateFormModal
+      <ManagerBannerCreateFormModal
         visible={showCreateModal}
         onCancel={handleCancel}
       />

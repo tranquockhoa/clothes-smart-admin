@@ -10,6 +10,7 @@ export default [
   layout("./routes/main-layout.tsx", [
     index("./routes/manage-user/index.tsx"),
     route("manage-banner", "./routes/manage-banner/index.tsx"),
+    route("manage-categories", "./routes/manage-categories/index.tsx"),
     // route("manage-user", "./routes/manage-user/index.tsx"),
 
     route("profile", "./routes/profile/index.tsx"),
